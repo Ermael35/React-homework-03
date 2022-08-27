@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-
+import Layout from "../components/Layout"
 
 const ListTodo = () => {
     return(
         <todo-container>
+            <Layout/>
             <Sttodo><h1>내 할일</h1></Sttodo>     
 
             <StBox>
@@ -27,7 +28,7 @@ export default ListTodo;
 
 const Sttodo = styled.div`
     text-align: left;
-    margin: 100px auto 5px 35px;
+    margin: 50px auto 5px 35px;
 `
 
 const StBox = styled.div`
