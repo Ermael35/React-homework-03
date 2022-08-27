@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import AddTodo from "../pages/AddTodo"
 import DetailTodo from "../pages/DetailTodo";
-
+import ListTodo from "../pages/ListTodo";
 
 const Router = () => {
   return (
@@ -12,6 +12,9 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/addtodo" element={<AddTodo/>}/>
         <Route path="/detail" element={<DetailTodo/>}/>
+        <Route path="/listtodo" element={<ListTodo/>}/>
+        <Route path="/detail" element={<DetailTodo/>} />
+        <Route path="*" element={<>404 NOT FOUNG</>} />
       </Routes>
     </BrowserRouter>
   );

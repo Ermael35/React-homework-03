@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
-import Addcon from "../components/Addcon"
+import Addcon from "../Addtodo/Addcon"
 const AddTodo = () =>{
     return(
         <div>
