@@ -11,6 +11,7 @@ const Router = () => {
             <Route path="/" element={<Home/>} />
             <Route path="/listtodo" element={<ListTodo/>}/>
             <Route path="/detail" element={<Detail/>} />
+            <Route path="*" element={<>404 NOT FOUNG</>} />
         </Routes>
         </BrowserRouter>
         
@@ -18,6 +19,3 @@ const Router = () => {
 }
 
 export default Router;
-
-
-

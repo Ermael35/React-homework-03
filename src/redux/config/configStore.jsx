@@ -1,10 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counter from "../modules/counterSlice";
+import {createStore, combineReducers} from "redux";
+import todo from "../modules/todo"
 
-const store = configureStore({
-  reducer: {
-		counter,
-  },
-});
+const rootReducer = combineReducers({todo});
+
+const store = createStore(rootReducer);
 
 export default store;

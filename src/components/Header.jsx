@@ -15,7 +15,7 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.div`
-    min-width: 800px;
+    width: calc(100%-0px);
     border: 1px solid #eee;
     height: 80px;
     display: flex;
