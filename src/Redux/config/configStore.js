@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from "redux";
-import todo from "../modules/todo"
+import commen from "../modules/commentSlice"
 
-const rootReducer = combineReducers({todo});
+const rootReducer = combineReducers({commen: commen.reducer});
 
 const store = createStore(rootReducer);
 

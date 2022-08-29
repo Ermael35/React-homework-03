@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = () => {
     return(
         <HeaderContainer>
-            <h1>🎃</h1>
+            <HomeIcon>🎃</HomeIcon>
             <HeaderTit>3조의 투두리스트</HeaderTit>
         </HeaderContainer>
     )
@@ -13,7 +13,10 @@ const Header = () => {
 
 
 export default Header;
-
+const HomeIcon = styled.h1`
+    cursor:pointer;
+    font-size: 30px;
+`
 const HeaderContainer = styled.div`
     min-width: 800px;
     border: 1px solid #eee;
