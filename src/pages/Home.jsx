@@ -1,12 +1,14 @@
-import React from 'react'
-import Layout from '../components/Layout'
+import React from "react";
+import HomeCon from "../components/HomeCon";
+import Layout from "../components/Layout";
 
 const Home = () => {
   return (
     <div>
-        <Layout/>
+      <Layout />
+      <HomeCon />
     </div>
-  )
-}
+  );
+};
 
 export default Home;
