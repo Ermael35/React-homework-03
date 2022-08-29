@@ -1,9 +1,8 @@
-// Actions
-const ADD_TODO = "todo/ADD_TODO";
-const DELETE_TODO = "todo/DELELTE_TODO";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  todos: [
+export const todos = createSlice({
+  name: "todos",
+  initialState: [
     // {
     //   id: 0,
     //   writer: "",
@@ -11,33 +10,17 @@ const initialState = {
     //   body: "",
     // },
   ],
-};
 
-// Action Creators
-export function addTodo(payload) {
-  return { type: ADD_TODO, payload };
-}
+  reducers: {
+    addTodo(state, action) {
+      state.push(action.payload);
+    },
+    deleteTodo(state, action) {
+      let index = state.findIndex((todo) => todo.id === action.payload);
+      state.splice(index, 1);
+    },
+  },
+});
 
-export function deleteTodo(payload) {
-  return { type: DELETE_TODO, payload };
-}
-
-// Reducer
-export default function todos(state = initialState, action) {
-  switch (action.type) {
-    case "todo/ADD_TODO": {
-      const new_todo_list = [...state.todos, action.payload];
-      return { todos: new_todo_list };
-    }
-
-    case "todo/DELELTE_TODO": {
-      const new_todo_list = [...state.todos].filter((todo) => {
-        return todo.id !== action.payload;
-      });
-      return { todos: new_todo_list };
-    }
-
-    default:
-      return state;
-  }
-}
+export const { addTodo, deleteTodo } = todos.actions;
+export default todos;

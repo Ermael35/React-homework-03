@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 
 const List = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todo.todos);
+  const todos = useSelector((state) => state.todos);
+
+  console.log(todos);
 
   return (
     <Stlist>

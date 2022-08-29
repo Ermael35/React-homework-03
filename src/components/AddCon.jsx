@@ -22,7 +22,7 @@ function AddCon() {
     const { name, value } = event.target;
     setTodo({ ...todo, [name]: value, id: number });
   };
-
+  console.log(addTodo);
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (
