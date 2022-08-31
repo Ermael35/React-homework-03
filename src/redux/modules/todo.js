@@ -32,14 +32,17 @@ export const todosSlice = createSlice({
       state.todos.splice(index, 1);
       axios.delete(`http://localhost:3001/todos/${action.payload}`);
     },
-    // updateTodo(state, action) {
-    //   let index = state.findIndex((todo) => todo.id === action.payload.id);
-    //   state.splice(index, 1, action.payload);
-    //   axios.update(
-    //     `http://localhost:3001/todos/${action.payload.id}`,
-    //     action.payload
-    //   );
-    // },
+    updateTodo(state, action) {
+      let index = state.todos.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+
+      state.todos.splice(index, 1, action.payload);
+      axios.patch(
+        `http://localhost:3001/todos/${action.payload.id}`,
+        action.payload
+      );
+    },
   },
   extraReducers: {
     [__getTodos.pending]: (state) => {

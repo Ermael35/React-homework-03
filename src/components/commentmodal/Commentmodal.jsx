@@ -14,7 +14,7 @@ const Commentmodal = ({ ment, close }) => {
   const [ment1, setMent] = useState(initialState);
   const [desc, setDesc] = useState(ment1.comm);
   const [desc2, setDesc2] = useState(ment1.name);
-  console.log(ment1);
+
   return (
     <>
       <div className="black-bg show-modal">
@@ -22,7 +22,7 @@ const Commentmodal = ({ ment, close }) => {
           <h4>댓글 수정하기</h4>
           <LabelContainer>
             <div>
-              <Label>제목</Label>
+              <Label>작성자</Label>
               <Input
                 className="input"
                 type="text"

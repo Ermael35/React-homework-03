@@ -1,33 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import nextId from "react-id-generator";
 import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../redux/modules/comments";
 import Com from "./Com";
 import { useParams } from "react-router-dom";
+import { __getComments } from "../../redux/modules/comments";
 
 const Comment = () => {
-  const dispatch = useDispatch();
-  // const [addcommen,setAddcommmen] = useState("")
-  // const [addname,setAddName] = useState("")
-  const reviews = useSelector((state) => state.commen.comments);
-
-  console.log(reviews);
   const initialState = {
     id: 0,
     post: 0,
     name: "",
     comm: "",
   };
-  let { id } = useParams();
-  //   console.log(id)
+
   const [review, setReview] = useState(initialState);
+  let { id } = useParams();
+  const dispatch = useDispatch();
+  // const [addcommen,setAddcommmen] = useState("")
+  // const [addname,setAddName] = useState("")
+  const { isLoading, error, comments } = useSelector((state) => state.comments);
+  // const { todos } = useSelector((state) => state.todos);
+  useEffect(() => {
+    dispatch(__getComments());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>로딩 중....</div>;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setReview({ ...review, id: nextId(), post: id, [name]: value });
   };
-  let commentList = reviews.filter((comment) => {
+  let commentList = comments.filter((comment) => {
     return String(comment.post) === id;
   });
 
@@ -63,7 +74,6 @@ const Comment = () => {
       </CommentContainer>
       <div>
         {commentList.map((commet) => {
-          console.log(commet);
           return <Com key={commet.id} ment={commet} />;
         })}
       </div>

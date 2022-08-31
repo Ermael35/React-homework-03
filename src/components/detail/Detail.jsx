@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/";
 import { deleteTodo } from "../../redux/modules/todo";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { __getTodos } from "../../redux/modules/todo";
 
 import Postmodal from "../postmodal/Postmodal";
 
@@ -12,12 +13,23 @@ const Detail = () => {
   let dispatch = useDispatch();
   let [modal, setModal] = useState(false);
   let { id } = useParams();
-  const todos = useSelector((state) => state.todos.todos);
-
+  // const todos = useSelector((state) => state.todos);
+  const { isLoading, error, todos } = useSelector((state) => state.todos);
   let todo = todos.find((todo) => {
     return String(todo.id) === id;
   });
-  console.log(todos);
+  // const { todos } = useSelector((state) => state.todos);
+  useEffect(() => {
+    dispatch(__getTodos());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>로딩 중....</div>;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
 
   const close = () => {
     setModal(false);
@@ -31,12 +43,10 @@ const Detail = () => {
         <DetailBackButton>
           <DetailButton onClick={() => navigate(-1)}>이전으로</DetailButton>
         </DetailBackButton>
-        <DetailTit>{todo.title}</DetailTit>
-        <p>{todo.body}</p>
-        <p>{todo.date}</p>
-        <p>{todo.writer}</p>
+        <DetailTit>{todo?.title}</DetailTit>
+        <p>{todo?.body}</p>
+        <p>{todo?.writer}</p>
         <div>
-          <p>{todo.count}</p>
           <DetailButtons
             onClick={() => {
               setModal(true);

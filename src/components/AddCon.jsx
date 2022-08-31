@@ -34,7 +34,7 @@ function AddCon() {
       return;
     dispatch(addTodo({ ...todo, id: id }));
     setTodo(initialState);
-    navigate("/listtodo");
+    navigate("/");
   };
 
   return (

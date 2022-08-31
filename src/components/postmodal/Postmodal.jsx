@@ -9,8 +9,6 @@ const Postmodal = ({ post, close }) => {
     writer: post.writer,
     title: post.title,
     body: post.body,
-    date: post.date,
-    count: post.count,
   };
   const [post1, setPost1] = useState(initialState);
   const [title, setTitle] = useState(post1.title);
@@ -52,6 +50,7 @@ const Postmodal = ({ post, close }) => {
             className="btn btn-danger"
             onClick={() => {
               dispatch(updateTodo({ ...post1, title: title, body: body }));
+
               close();
             }}
           >
