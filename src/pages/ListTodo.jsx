@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
-import List from "../Listtodo/List";
+import List from "../components/List";
 
 const ListTodo = () => {
     return(

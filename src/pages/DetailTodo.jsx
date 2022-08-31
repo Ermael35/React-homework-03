@@ -1,18 +1,16 @@
 import React from 'react'
-import DetailCon from '../Detailtodo/DetailCon'
 import Layout from '../components/Layout'
-import Comment from '../Detailtodo/Comment/Comment'
+import Detail from '../components/detail/Detail'
+import Comment from '../components/comment/Comment'
 
-export const DetailTodo = () => {
+const DetailTodo = () => {
   return (
-    <>
-    <Layout/>
-    <DetailCon/>
-    <Comment/>
-    </>
+    <div>
+        <Layout/>
+        <Detail/>
+          <Comment/>
+    </div>
   )
-
-
 }
 
-export default DetailTodo
+export default DetailTodo;

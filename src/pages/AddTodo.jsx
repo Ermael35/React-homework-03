@@ -1,13 +1,14 @@
 import React from "react";
 import Layout from "../components/Layout";
-import Addcon from "../Addtodo/Addcon"
+import AddCon from "../components/AddCon"
+
 const AddTodo = () =>{
     return(
         <div>
-        <Layout/>
-        <Addcon/>
+            <Layout/>
+            <AddCon/>
         </div>
     )
 }
-
+                    
 export default AddTodo;
