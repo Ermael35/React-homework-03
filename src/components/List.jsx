@@ -21,11 +21,9 @@ const List = () => {
 
       {todoList.map((todo) => {
         return (
-          <StBox key={todo.id}>
+          <StBox key={todo.id} onClick={() => navigate("/detail/" + todo.id)}>
             <Stcontents>
-              <h2 onClick={() => navigate("/detail/" + todo.id)}>
-                {todo.title}
-              </h2>
+              <h2>{todo.title}</h2>
               <small>작성자: {todo.writer}</small>
             </Stcontents>
 

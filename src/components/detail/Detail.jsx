@@ -12,12 +12,12 @@ const Detail = () => {
   let dispatch = useDispatch();
   let [modal, setModal] = useState(false);
   let { id } = useParams();
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos.todos);
 
   let todo = todos.find((todo) => {
     return String(todo.id) === id;
   });
-  console.log(todo);
+  console.log(todos);
 
   const close = () => {
     setModal(false);

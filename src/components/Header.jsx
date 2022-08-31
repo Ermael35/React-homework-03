@@ -7,13 +7,14 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <StCon
+      <h1
         onClick={() => {
           navigate("/");
         }}
       >
         🎃
-      </StCon>
+      </h1>
+
       <HeaderTit>3조의 투두리스트</HeaderTit>
     </HeaderContainer>
   );
@@ -27,13 +28,8 @@ const HeaderContainer = styled.div`
   height: 80px;
   display: flex;
   justify-content: space-between;
-  padding: 0px 20px;
+  padding: 20px;
 `;
 const HeaderTit = styled.p`
   font-size: 22px;
-`;
-
-const StCon = styled.p`
-  cursor: pointer;
-  font-size: 25px;
 `;
