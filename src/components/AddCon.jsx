@@ -4,9 +4,10 @@ import { addTodo } from "../redux/modules/todo";
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
-let number = 1;
 function AddCon() {
+  const id = uuidv4();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,9 +21,9 @@ function AddCon() {
   const [todo, setTodo] = useState(initialState);
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    setTodo({ ...todo, [name]: value, id: number });
+    setTodo({ ...todo, [name]: value });
   };
-  console.log(addTodo);
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (
@@ -31,10 +32,9 @@ function AddCon() {
       todo.body.trim() === ""
     )
       return;
-    dispatch(addTodo({ ...todo, id: number }));
-    navigate("/listtodo");
+    dispatch(addTodo({ ...todo, id: id }));
     setTodo(initialState);
-    number++;
+    navigate("/listtodo");
   };
 
   return (

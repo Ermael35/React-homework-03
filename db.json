@@ -1,19 +1,16 @@
 {
-  "posts": [
+  "todos": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "d6e0dd5e-f022-489d-b9e5-ad4666a58342",
+      "writer": "ert",
+      "title": "ertert",
+      "body": "retert"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "1f4fad2f-0f62-4f45-b7f9-c38e9f43b416",
+      "writer": "adf",
+      "title": "asee",
+      "body": "ddddddddd"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
