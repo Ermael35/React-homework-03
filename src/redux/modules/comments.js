@@ -7,15 +7,15 @@ export const commen = createSlice({
     comments: [],
   },
   reducers: {
-    addComment: (state, action) => {
+    addComment (state, action)  {
       state.comments.push(action.payload)
     },
-    deleteComment: (state, action) =>{
+    deleteComment (state, action) {
       let index = state.comments.findIndex(comment=>comment.id === action.payload);
                     state.comments.splice(index,1);
     },
-    updateComment: (state, action) => {
-      let index = state.comments.findIndex(comment=>comment.id === action.payload.id);
+    updateComment(state, action) {
+      let index = state.comments.findIndex(post=>post.id === action.payload.id);
                     state.comments.splice(index,1,action.payload)
     }
     

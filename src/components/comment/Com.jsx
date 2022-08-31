@@ -16,7 +16,7 @@ const Com = ({ment}) => {
         <div className='list' key={ment.id}>
             <h4>{ment.name}</h4>
             <p>{ment.comm}</p>
-            <button onClick={()=>{
+            <button onClick={()=>{setModal(true);
             }}>수정하기</button>
             <button onClick={()=>{
               dispatch(deleteComment(ment.id))

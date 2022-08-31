@@ -9,7 +9,7 @@ const List = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const todos  = useSelector((state) => state.todos);
-  console.log(todos)
+  // console.log(todos)
 let todoList = todos.filter((todo)=>{
     return todo !== null;
 })

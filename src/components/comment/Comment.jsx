@@ -4,6 +4,7 @@ import nextId from "react-id-generator";
 import { useDispatch, useSelector } from 'react-redux'
 import {addComment} from '../../redux/modules/comments'
 import Com from './Com'
+import {useParams} from "react-router-dom"
 
 const Comment = () => {
     const dispatch = useDispatch();
@@ -13,34 +14,42 @@ const Comment = () => {
         
     const initialState = {
           id:0,
+          post:0,
           name:'',
           comm:''  
       };
-      
+      let {id} = useParams();
+    //   console.log(id)
       const [review,setReview] = useState(initialState)
       
     const onChangeHandler = (event) => {
         const {name, value} = event.target;
-        setReview({...review,id:nextId(), [name]:value})
+        setReview({...review,id:nextId(),post: id, [name]:value})
     }
-    // let commentList = reviews.filter((comment)=>{
-    //     return String(comment.post) === id;
-    // })
+    let commentList = reviews.filter((comment)=>{
+        return String(comment.post) === id;
+        
+    })
+    
     
   return (
     <CommentLayout>
         <h1>눌러서 댓글보기</h1>
         <CommentContainer>
-            
+            <NameContainer>
+            <Name>작성자</Name>
             <InputStyle type="text" name='name' value={review.name} onChange={onChangeHandler}/>
+            </NameContainer>
+            <NameContainer>
+            <Name>내용</Name>
             <InputStyle type="text" name='comm' value={review.comm} onChange = {onChangeHandler}/>
-            
-            <button onClick={()=>{
+            </NameContainer>
+            <Button onClick={()=>{
                 dispatch(addComment(review))
-            }}>댓글 남기기</button>
+            }}>댓글 남기기</Button>
         </CommentContainer>
-        <div>{reviews.map((commet)=>{
-
+        <div>{commentList.map((commet)=>{
+            console.log(commet)
             return(
                <Com key={commet.id} ment ={commet}/>
             )
@@ -61,11 +70,11 @@ const CommentContainer = styled.div`
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-pack: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: row;
     gap: 12px;
     width: 100%;
-    padding: 0px 12px;
+    padding: 0px 50px 0px 0px;
     margin-bottom: 30px;
 `
 const InputStyle = styled.input`
@@ -77,4 +86,16 @@ const InputStyle = styled.input`
     padding: 0px 12px;
     font-size: 14px;
     border: 1px solid rgb(238, 238, 238);
+`
+const Button = styled.button`
+    width: 300px;
+    height: 50px;
+    border: none;
+`
+const NameContainer = styled.div`
+    display: flex;
+    width: 400px;
+`
+const Name = styled.p`
+    width: 100px;
 `

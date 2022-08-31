@@ -17,7 +17,7 @@ const Detail = () =>{
     let todo = todos.find((todo)=>{
       return String(todo.id) === id;
     })
-    console.log(todo)
+    // console.log(todo)
   
   
   const close=()=>{
