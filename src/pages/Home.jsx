@@ -1,11 +1,14 @@
 import React from "react";
-import Layout from "../components/Layout"
+import HomeCon from "../components/HomeCon";
+import Layout from "../components/Layout";
 
 const Home = () => {
-    return(
-        <Layout/>
-    )
-}
-
+  return (
+    <div>
+      <Layout />
+      <HomeCon />
+    </div>
+  );
+};
 
 export default Home;
