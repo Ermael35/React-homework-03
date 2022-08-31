@@ -15,7 +15,6 @@ const Header = () => {
 export default Header;
 const HomeIcon = styled.h1`
     cursor:pointer;
-    font-size: 30px;
 `
 const HeaderContainer = styled.div`
     min-width: 800px;

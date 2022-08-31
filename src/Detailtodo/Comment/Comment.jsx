@@ -23,7 +23,7 @@ const Comment = () => {
         const {name, value} = event.target;
         setReview({...review,id:nextId(), [name]:value})
     }
-    console.log(reviews)
+    
   return (
     <CommentLayout>
         <h1>눌러서 댓글보기</h1>

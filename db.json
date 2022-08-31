@@ -1,0 +1,61 @@
+{
+  "todos": [
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "id9",
+      "name": "dsfdf",
+      "comm": "dfsf"
+    },
+    {
+      "id": "id7",
+      "name": "sfsd",
+      "comm": "sdf"
+    },
+    {
+      "id": "id14",
+      "name": "sdfsaf",
+      "comm": "asdfasdf"
+    },
+    {
+      "id": "id16",
+      "name": "sdfsaf",
+      "comm": "asdfasdfdf"
+    },
+    {
+      "id": "id20",
+      "name": "sdfsafadsf",
+      "comm": "asdfasdfdf"
+    },
+    {
+      "id": "id6",
+      "name": "asd",
+      "comm": "asd"
+    },
+    {
+      "id": "id11",
+      "name": "zxc",
+      "comm": "zx"
+    },
+    {
+      "id": "id5",
+      "name": "sf",
+      "comm": "sdf"
+    },
+    {
+      "id": "id4",
+      "name": "sa",
+      "comm": "as"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,9 +1,14 @@
 import React from "react";
+
 import Layout from "../components/Layout"
 
-const Home = () => {
+export const Home = () => {
+ 
     return(
+        <>
         <Layout/>
+        </>
+    
     )
 }
 

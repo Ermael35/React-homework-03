@@ -1,0 +1,19 @@
+{  "todos": [],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "name": "some comment",
+      "comm": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
