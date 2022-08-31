@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../redux/modules/todo";
@@ -6,19 +7,25 @@ import { useSelector } from "react-redux";
 
 const List = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const { todos } = useSelector((state) => state.todos);
-
+  console.log(todos);
+  let todoList = todos.filter((todo) => {
+    return todo !== null;
+  });
   return (
     <Stlist>
       <Sttodo>
         <h1>내 할일</h1>
       </Sttodo>
 
-      {todos.map((todo) => {
+      {todoList.map((todo) => {
         return (
           <StBox key={todo.id}>
             <Stcontents>
-              <h2>{todo.title}</h2>
+              <h2 onClick={() => navigate("/detail/" + todo.id)}>
+                {todo.title}
+              </h2>
               <small>작성자: {todo.writer}</small>
             </Stcontents>
 

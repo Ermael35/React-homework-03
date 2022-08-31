@@ -14,7 +14,6 @@ const Header = () => {
       >
         🎃
       </StCon>
-      {/* h1 태그 사용 안 하고 크기 조절 가능한지 */}
       <HeaderTit>3조의 투두리스트</HeaderTit>
     </HeaderContainer>
   );

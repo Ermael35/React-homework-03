@@ -32,6 +32,11 @@ export const todosSlice = createSlice({
       state.todos.splice(index, 1);
       axios.delete(`http://localhost:3001/todos/${action.payload}`);
     },
+    updateTodo(state, action) {
+      let index = state.findIndex((todo) => todo.id === action.payload.id);
+      state.splice(index, 1, action.payload);
+      axios.update(`http://localhost:3001/todos/`, action.payload.id);
+    },
   },
   extraReducers: {
     [__getTodos.pending]: (state) => {
@@ -48,7 +53,7 @@ export const todosSlice = createSlice({
   },
 });
 
-export const { addTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, updateTodo } = todosSlice.actions;
 export default todosSlice.reducer;
 
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
