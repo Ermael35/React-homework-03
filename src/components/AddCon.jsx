@@ -2,16 +2,17 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/modules/todo";
 import styled from "styled-components";
+import nextId from "react-id-generator";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-let number = 1;
+
 function AddCon() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  let id = nextId();
   const initialState = {
-    id: 0,
+    id: "",
     writer: "",
     title: "",
     body: "",
@@ -20,7 +21,7 @@ function AddCon() {
   const [todo, setTodo] = useState(initialState);
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    setTodo({ ...todo, [name]: value, id: number });
+    setTodo({ ...todo, [name]: value, id:id });
   };
 
   const onSubmitHandler = (event) => {
@@ -31,10 +32,9 @@ function AddCon() {
       todo.body.trim() === ""
     )
       return;
-    dispatch(addTodo({ ...todo, id: number }));
+    dispatch(addTodo({ ...todo, id: id }));
     navigate("/listtodo");
     setTodo(initialState);
-    number++;
   };
 
   return (

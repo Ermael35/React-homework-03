@@ -1,10 +1,10 @@
 import {useParams} from "react-router-dom"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux/';
 import {  deleteTodo } from "../../redux/modules/todo";
 import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
-
+import { __getTodos } from "../../redux/modules/todo";
 import Postmodal from "../postmodal/Postmodal";
 
 const Detail = () =>{
@@ -12,8 +12,17 @@ const Detail = () =>{
   let dispatch = useDispatch();
     let [modal, setModal] = useState(false);
     let {id} = useParams();
-    const  todos  = useSelector((state) => state.todos);
-  
+    const { isLoading, error, todos }  = useSelector((state) => state.todos);
+    useEffect(() => {
+      dispatch(__getTodos());
+  }, [dispatch]);
+  if (isLoading) {
+      return <div>로딩 중....</div>;
+  }
+
+  if (error) {
+      return <div>{error.message}</div>;
+  }
     let todo = todos.find((todo)=>{
       return String(todo.id) === id;
     })

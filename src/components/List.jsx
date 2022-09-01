@@ -1,17 +1,29 @@
 import React from "react";
 import {useNavigate} from "react-router-dom"
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
 import { deleteTodo } from "../redux/modules/todo";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { __getTodos } from "../redux/modules/todo";
+import {useEffect} from "react";
 const List = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const todos  = useSelector((state) => state.todos);
-  // console.log(todos)
+  const { isLoading, error, todos } = useSelector((state) => state.todos);
+  console.log(todos)
+
+  useEffect(() => {
+    dispatch(__getTodos());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>로딩 중....</div>;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
 let todoList = todos.filter((todo)=>{
-    return todo !== null;
+  return todo !== null;
 })
   return (
     <Stlist>

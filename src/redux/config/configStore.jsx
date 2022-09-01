@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import commen from "../modules/comments";
+import comments from "../modules/comments";
 import todos from "../modules/todo";
 
 const store = configureStore({
   reducer: {
     todos: todos.reducer,
-    commen: commen.reducer
+    comments: comments.reducer
   },
 });
 

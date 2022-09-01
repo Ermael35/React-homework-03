@@ -1,30 +1,39 @@
-import React, { useState } from 'react'
+import React from "react";
+import { useEffect, useState } from "react";
 import styled from 'styled-components'
 import nextId from "react-id-generator";
 import { useDispatch, useSelector } from 'react-redux'
 import {addComment} from '../../redux/modules/comments'
 import Com from './Com'
 import {useParams} from "react-router-dom"
-
+import { __getComments } from '../../redux/modules/comments';
 const Comment = () => {
     const dispatch = useDispatch();
     // const [addcommen,setAddcommmen] = useState("")
     // const [addname,setAddName] = useState("")
-    const reviews = useSelector((state) => state.commen.comments);
-        
     const initialState = {
           id:0,
           post:0,
-          name:'',
-          comm:''  
+          name:"",
+          comm:""  
       };
       let {id} = useParams();
-    //   console.log(id)
       const [review,setReview] = useState(initialState)
       
     const onChangeHandler = (event) => {
         const {name, value} = event.target;
         setReview({...review,id:nextId(),post: id, [name]:value})
+    }
+    const { isLoading, error, reviews} = useSelector((state) => state.commen.comments);
+    useEffect(() => {
+        dispatch(__getComments());
+    }, [dispatch]);
+    if (isLoading) {
+        return <div>로딩 중....</div>;
+    }
+
+    if (error) {
+        return <div>{error.message}</div>;
     }
     let commentList = reviews.filter((comment)=>{
         return String(comment.post) === id;
